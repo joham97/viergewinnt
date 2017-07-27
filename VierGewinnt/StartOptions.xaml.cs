@@ -31,6 +31,25 @@ namespace VierGewinnt
 
         }
 
+        public StartOptions(String text1, String text2, byte first, Color c1, Color c2)
+        {
+            InitializeComponent();
+
+            tb_player1.Text = text1;
+            tb_player2.Text = text2;
+            if(first == 1)
+            {
+                rb_Startetp1.IsChecked = true;
+            }
+            else
+            {
+                rb_Startetp2.IsChecked = true;
+            }
+            clrPcker_spieler1.SelectedColor = c1;
+            clrPcker_spieler2.SelectedColor = c2;
+
+        }
+
         private void btn_Start_Click(object sender, RoutedEventArgs e)
         {
             Byte erster = 0;

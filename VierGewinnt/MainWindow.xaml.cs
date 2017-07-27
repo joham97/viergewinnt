@@ -32,7 +32,7 @@ namespace VierGewinnt
             frame_p1.BorderThickness = new Thickness(2.0);
             frame_p2.BorderThickness = new Thickness(2.0);
 
-            if(erster == 1)
+            if (erster == 1)
             {
                 amZug = spieler1;
                 frame_p1.BorderBrush = Brushes.Red;
@@ -48,20 +48,40 @@ namespace VierGewinnt
             spielfeld.feld = viergewinnt.feld;
             spielfeld.redraw();
 
-            spielfeld.Tick += (i, e) => {
+            spielfeld.Tick += (i, e) =>
+            {
                 if (viergewinnt.setzeChip(i, amZug))
                 {
+                    spielfeld.redraw();
                     if (amZug == spieler1)
                     {
                         amZug = spieler2;
                         frame_p1.BorderBrush = Brushes.White;
                         frame_p2.BorderBrush = Brushes.Red;
+
                     }
                     else
                     {
                         amZug = spieler1;
                         frame_p1.BorderBrush = Brushes.Red;
                         frame_p2.BorderBrush = Brushes.White;
+
+                    }
+                    if (viergewinnt.spielende())
+                    {
+                        String gewinner = "Der Gewinner ist " + viergewinnt.getGewinner().Name+". Wollen Sie nochmal Spielen?";
+                        String retry = "Spiel beendet";
+                        MessageBoxButton but = MessageBoxButton.YesNo;
+                        var result = MessageBox.Show(gewinner, retry, but);
+                        if (result == MessageBoxResult.Yes)
+                        {
+                            newStart(spieler1.Name, spieler2.Name, erster, spieler1.Farbe, spieler2.Farbe);
+                        }
+                        else if (result == MessageBoxResult.No)
+                        {
+                            this.Close();
+                        }
+
                     }
                     spielfeld.redraw();
                 }
@@ -72,6 +92,16 @@ namespace VierGewinnt
 
             Thread timer = new Thread(CountTime);
             timer.Start();
+
+
+
+        }
+
+        private void newStart(string p1, string p2, byte erster, Color c1, Color c2)
+        {
+            StartOptions s = new StartOptions(p1, p2, erster, c1, c2);
+            s.Show();
+            this.Close();
         }
 
         private void CountTime()
