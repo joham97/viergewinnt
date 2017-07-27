@@ -121,7 +121,7 @@ namespace VierGewinnt
                 anz = 0;
                 int s = spalte + 1;
                 int z = zeile - 1;
-                while (s < feld.GetLength(1) && s < spalte - 4 && z >= 0 && z > zeile - 4)
+                while (s < feld.GetLength(1) && s < spalte + 4 && z >= 0 && z > zeile - 4)
                 {
                     if (feld[zeile, spalte] == feld[z, s])
                         anz++;
@@ -136,7 +136,7 @@ namespace VierGewinnt
                 anz = 0;
                 s = spalte + 1;
                 z = zeile + 1;
-                while (s < feld.GetLength(1) && s < spalte - 4 && z < feld.GetLength(0) && z < spalte - 4)
+                while (s < feld.GetLength(1) && s < spalte + 4 && z < feld.GetLength(0) && z < spalte + 4)
                 {
                     if (feld[zeile, spalte] == feld[z, s])
                         anz++;
@@ -166,7 +166,7 @@ namespace VierGewinnt
                 anz = 0;
                 s = spalte - 1;
                 z = zeile + 1;
-                while (s >= 0 && s > spalte - 4 && z < feld.GetLength(0) && z < spalte - 4)
+                while (s >= 0 && s > spalte - 4 && z < feld.GetLength(0) && z < zeile + 4)
                 {
                     if (feld[zeile, spalte] == feld[z, s])
                         anz++;
