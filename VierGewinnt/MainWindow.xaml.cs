@@ -29,7 +29,6 @@ namespace VierGewinnt
         public MainWindow(String namep1, Color colorp1, String namep2, Color colorp2, Byte erster)
         {
             InitializeComponent();
-            spielfeld.initFeld(true);
             Thread timer = new Thread(CountTime);
             timer.Start();
 
@@ -192,12 +191,12 @@ namespace VierGewinnt
         {
             historie.Show();
         }
-
+        
         private void windowClosing(object sender, CancelEventArgs e)
         {
             Environment.Exit(0);
         }
-        
+
         private void save_Click(object sender, RoutedEventArgs e)
         {
 
@@ -205,7 +204,7 @@ namespace VierGewinnt
 
         private void load_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
     }
 }

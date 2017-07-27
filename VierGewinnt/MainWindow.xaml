@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VierGewinnt"
         mc:Ignorable="d"
-        Title="4 Gewinnt" Height="860" Width="810" Closing="windowClosing">
+        Title="4 Gewinnt" Height="760" Width="810" Closing="windowClosing">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
@@ -36,7 +36,7 @@
         <Label x:Name="lbl_Player2" Content="Player 2" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="1" VerticalAlignment="Top" Height="28" Width="125" Grid.Column="2"/>
         <Border x:Name="color_p2" BorderThickness="1" HorizontalAlignment="Left" Height="23" Margin="140,5,0,0" Grid.Row="1" VerticalAlignment="Top" Width="30" Grid.Column="2" Background="#FF2300FF"/>
 
-        <local:SpielfeldUserControl x:Name="spielfeld" Width="700" Height="600" Margin="49,61,53,149" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="2" />
+        <local:SpielfeldUserControl x:Name="spielfeld" Width="700" Height="600" Margin="47,62,45,38" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="2"/>
 
 
     </Grid>
