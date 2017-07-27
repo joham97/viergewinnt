@@ -9,7 +9,7 @@ namespace VierGewinnt
     public class Feld
     {
         public Spieler[,] feld { get; private set; }
-        private Spieler gewinner;
+        public Spieler gewinner { get; set; }
 
         public Feld()
         {
@@ -34,11 +34,6 @@ namespace VierGewinnt
                     gesetzt = true;
                 }
             }
-        }
-
-        public Spieler getGewinner()
-        {
-            return gewinner;
         }
 
         public Boolean gueltigerZug(int spalte)
