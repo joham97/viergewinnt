@@ -13,7 +13,7 @@ namespace VierGewinnt
 
         public Feld()
         {
-            feld = new Spieler[7, 7];
+            feld = new Spieler[6, 7];
 
             // Zeile, Spalte
             // 0,0 ist unten links

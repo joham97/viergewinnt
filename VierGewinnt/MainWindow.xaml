@@ -19,8 +19,8 @@
         </Grid.ColumnDefinitions>
         <Menu x:Name="_menu_control" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="5000">
             <MenuItem x:Name="Menu" Width="50" Height="20" Header="Menu">
-                <MenuItem Command="Save"/>
-                <MenuItem Header="Load" DisplayMemberPath="Strg+L"/>
+                <MenuItem Command="Save" Click="save_Click"/>
+                <MenuItem Header="Load" DisplayMemberPath="Strg+L" Click="load_Click"/>
             </MenuItem>
             <MenuItem x:Name="Historie" Width="60" Height="20" Header="Historie" Click="Historie_Click">
             </MenuItem>
@@ -36,7 +36,7 @@
         <Label x:Name="lbl_Player2" Content="Player 2" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="1" VerticalAlignment="Top" Height="28" Width="125" Grid.Column="2"/>
         <Border x:Name="color_p2" BorderThickness="1" HorizontalAlignment="Left" Height="23" Margin="140,5,0,0" Grid.Row="1" VerticalAlignment="Top" Width="30" Grid.Column="2" Background="#FF2300FF"/>
 
-        <local:SpielfeldUserControl x:Name="spielfeld" Width="700" Height="700" Margin="39,60,53,40" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="2" />
+        <local:SpielfeldUserControl x:Name="spielfeld" Width="700" Height="600" Margin="49,61,53,149" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="2" />
 
 
     </Grid>

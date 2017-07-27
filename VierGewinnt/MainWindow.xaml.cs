@@ -32,6 +32,7 @@ namespace VierGewinnt
             spielfeld.initFeld(true);
             Thread timer = new Thread(CountTime);
             timer.Start();
+
             Spieler spieler1 = new Spieler(namep1, colorp1);
             Spieler spieler2 = new Spieler(namep2, colorp2);
 
@@ -49,9 +50,10 @@ namespace VierGewinnt
                 frame_p2.BorderBrush = Brushes.Red;
 
             }
-
+            
             VierGewinntSpiel viergewinnt = new VierGewinntSpiel(spieler1, spieler2);
             spielfeld.feld = viergewinnt.feld;
+            spielfeld.initFeld(true);
             spielfeld.redraw();
 
             spielfeld.Tick += (i, e) =>
@@ -95,8 +97,8 @@ namespace VierGewinnt
                     spielfeld.redraw();
                 }
             };
-
-            historie = new Historie();
+            
+            historie = new Historie(spielfeld.feld);
             historie.Add(viergewinnt.kloneFeld());
 
             setColorsPlayers(spieler1.Farbe, spieler2.Farbe);
@@ -194,6 +196,16 @@ namespace VierGewinnt
         private void windowClosing(object sender, CancelEventArgs e)
         {
             Environment.Exit(0);
+        }
+        
+        private void save_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void load_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

@@ -23,9 +23,10 @@ namespace VierGewinnt
 
         public int currentHistoryId;
 
-        public Historie()
+        public Historie(Feld feld)
         {
             InitializeComponent();
+            spielfeld.feld = feld;
             spielfeld.initFeld(false);
             history = new List<Feld>();
         }
@@ -34,6 +35,7 @@ namespace VierGewinnt
         {
             history.Add(feld);
             currentHistoryId = history.Count - 1;
+            spielfeld.feld = history[currentHistoryId];
         }
 
         private void prev_Click(object sender, RoutedEventArgs e)

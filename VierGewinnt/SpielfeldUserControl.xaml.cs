@@ -27,16 +27,18 @@ namespace VierGewinnt
 
         public Feld feld { get; set; }
 
+        public bool inited = false;
+
         public SpielfeldUserControl()
         {
             InitializeComponent();
         }
-        
+
         public void initFeld(bool withMouseEvent)
         {
-            for (int x = 0; x < 7; x++)
+            for (int x = 0; x < feld.feld.GetLength(0); x++)
             {
-                for (int y = 0; y < 7; y++)
+                for (int y = 0; y < feld.feld.GetLength(1); y++)
                 {
                     int X = x;
                     int Y = y;
@@ -46,50 +48,51 @@ namespace VierGewinnt
                     ellipse.Fill = new SolidColorBrush(Color.FromRgb((byte)200, (byte)200, (byte)200));
                     if (withMouseEvent)
                     {
-                        ellipse.MouseEnter += (obj, e) => { highlightColumn(X); };
-                        ellipse.MouseLeave += (obj, e) => { notHighlightColumn(X); };
-                        ellipse.MouseDown += (obj, e) => { Tick(X, e); };
+                        ellipse.MouseEnter += (obj, e) => { highlightColumn(Y); };
+                        ellipse.MouseLeave += (obj, e) => { notHighlightColumn(Y); };
+                        ellipse.MouseDown += (obj, e) => { Tick(Y, e); };
                     }
                     grid.Children.Add(ellipse);
-                    Grid.SetColumn(ellipse, x);
-                    Grid.SetRow(ellipse, y);
+                    Grid.SetColumn(ellipse, y);
+                    Grid.SetRow(ellipse, x);
                 }
             }
         }
 
-        private void highlightColumn(int x)
+        private void highlightColumn(int y)
         {
-            for (int y = 0; y < 7; y++)
+            for (int x = 0; x < feld.feld.GetLength(0); x++)
             {
-                if (feld.feld[y, x] == null)
+                if (feld.feld[x, y] == null)
                 {
-                    getEllipse(y, x).Fill = new SolidColorBrush(Color.FromRgb((byte)150, (byte)150, (byte)150));
+                    getEllipse(x, y).Fill = new SolidColorBrush(Color.FromRgb((byte)150, (byte)150, (byte)150));
                 }
             }
         }
 
-        private void notHighlightColumn(int x)
+        private void notHighlightColumn(int y)
         {
-            for (int y = 0; y < 7; y++)
+            for (int x = 0; x < feld.feld.GetLength(0); x++)
             {
-                if (feld.feld[y, x] == null)
+                if (feld.feld[x, y] == null)
                 {
-                    getEllipse(y, x).Fill = new SolidColorBrush(Color.FromRgb((byte)200, (byte)200, (byte)200));
+                    getEllipse(x, y).Fill = new SolidColorBrush(Color.FromRgb((byte)200, (byte)200, (byte)200));
                 }
             }
         }
 
         public void redraw()
         {
-            for (int x = 0; x < 7; x++)
+            for (int x = 0; x < feld.feld.GetLength(0); x++)
             {
-                for (int y = 0; y < 7; y++)
+                for (int y = 0; y < feld.feld.GetLength(1); y++)
                 {
                     if (feld.feld[x, y] != null)
                     {
                         getEllipse(x, y).Fill = new SolidColorBrush(feld.feld[x, y].Farbe);
-                        
-                    } else
+
+                    }
+                    else
                     {
                         getEllipse(x, y).Fill = new SolidColorBrush(Color.FromRgb((byte)200, (byte)200, (byte)200));
                     }
@@ -99,16 +102,11 @@ namespace VierGewinnt
 
         private Ellipse getEllipse(int x, int y)
         {
-            x = (6 - x);
-            var ellipse = grid.Children.Cast<UIElement>().Where(i => Grid.GetRow(i) == x);
-            int forY = 0;
+            x = (feld.feld.GetLength(0) - 1) - x;
+            var ellipse = grid.Children.Cast<UIElement>().Where(i => Grid.GetRow(i) == x).Where(i => Grid.GetColumn(i) == y);
             foreach (Ellipse ell in ellipse)
             {
-                if(forY == y)
-                {
-                    return ell;
-                }
-                forY++;
+                return ell;                
             }
             return null;
         }
