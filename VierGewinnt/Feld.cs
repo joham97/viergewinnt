@@ -73,7 +73,7 @@ namespace VierGewinnt
             {
                 // Unten
                 anz = 0;
-                for (int i = zeile - 1; i >= 0 && i > zeile - 3; i--)
+                for (int i = zeile - 1; i >= 0 && i > zeile - 4; i--)
                 {
                     if (feld[zeile, spalte] == feld[i, spalte])
                         anz++;
@@ -84,7 +84,7 @@ namespace VierGewinnt
 
                 // Oben 
                 anz = 0;
-                for (int i = zeile + 1; i < feld.GetLength(0) && i < zeile + 3; i++)
+                for (int i = zeile + 1; i < feld.GetLength(0) && i < zeile + 4; i++)
                 {
                     if (feld[zeile, spalte] == feld[i, spalte])
                         anz++;
@@ -95,7 +95,7 @@ namespace VierGewinnt
 
                 // Links 
                 anz = 0;
-                for (int i = spalte - 1; i >= 0 && i > spalte - 3; i--)
+                for (int i = spalte - 1; i >= 0 && i > spalte - 4; i--)
                 {
                     if (feld[zeile, spalte] == feld[zeile, i])
                         anz++;
@@ -106,7 +106,7 @@ namespace VierGewinnt
 
                 // Rechts 
                 anz = 0;
-                for (int i = spalte + 1; i < feld.GetLength(1) && i < zeile + 3; i++)
+                for (int i = spalte + 1; i < feld.GetLength(1) && i < zeile + 4; i++)
                 {
                     if (feld[zeile, spalte] == feld[zeile, i])
                         anz++;
