@@ -7,10 +7,10 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VierGewinnt
+namespace VierGewinnt 
 {
-    [Serializable]
-    class VierGewinntSpiel 
+    [Serializable()]
+    class VierGewinntSpiel
     {
         public Feld feld { get; private set; }
         private Spieler[] spieler;

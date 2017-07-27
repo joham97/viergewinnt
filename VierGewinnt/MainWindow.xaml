@@ -19,8 +19,8 @@
         </Grid.ColumnDefinitions>
         <Menu x:Name="_menu_control" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="5000">
             <MenuItem x:Name="Menu" Width="50" Height="20" Header="Menu">
-                <MenuItem Command="Save"/>
-                <MenuItem Header="Load" DisplayMemberPath="Strg+L"/>
+                <MenuItem Header="Save" Name="save" Click="save_Click" IsEnabled="True"/>
+                <MenuItem Header="Load" Name="load" Click="load_Click"/>
             </MenuItem>
             <MenuItem x:Name="Historie" Width="60" Height="20" Header="Historie" Click="Historie_Click">
             </MenuItem>
