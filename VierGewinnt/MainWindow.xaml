@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VierGewinnt"
         mc:Ignorable="d"
-        Title="4 Gewinnt" Height="860" Width="810">
+        Title="4 Gewinnt" Height="860" Width="810" Closing="windowClosing">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>

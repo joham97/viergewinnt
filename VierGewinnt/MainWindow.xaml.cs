@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -29,7 +30,8 @@ namespace VierGewinnt
         {
             InitializeComponent();
             spielfeld.initFeld(true);
-
+            Thread timer = new Thread(CountTime);
+            timer.Start();
             Spieler spieler1 = new Spieler(namep1, colorp1);
             Spieler spieler2 = new Spieler(namep2, colorp2);
 
@@ -73,6 +75,7 @@ namespace VierGewinnt
                     }
                     if (viergewinnt.spielende())
                     {
+                        timer.Interrupt();
                         String gewinner = "Der Gewinner ist " + viergewinnt.getGewinner().Name+". Wollen Sie nochmal Spielen?";
                         String retry = "Spiel beendet";
                         MessageBoxButton but = MessageBoxButton.YesNo;
@@ -84,6 +87,7 @@ namespace VierGewinnt
                         else if (result == MessageBoxResult.No)
                         {
                             this.Close();
+                            Environment.Exit(0);
                         }
 
                     }
@@ -98,8 +102,8 @@ namespace VierGewinnt
             setColorsPlayers(spieler1.Farbe, spieler2.Farbe);
             setNamesPlayers(spieler1.Name, spieler2.Name);
 
-            Thread timer = new Thread(CountTime);
-            timer.Start();
+            
+            
 
 
 
@@ -112,6 +116,7 @@ namespace VierGewinnt
             this.Close();
         }
 
+
         private void CountTime()
         {
             try
@@ -121,6 +126,9 @@ namespace VierGewinnt
 
                 while (true)
                 {
+
+                    
+
                     if (sec == 59)
                     {
                         min += 1;
@@ -130,6 +138,7 @@ namespace VierGewinnt
                     {
                         sec += 1;
                     }
+                    
                     Thread.Sleep(1000);
                     if (sec < 10 && min < 10)
                     {
@@ -152,7 +161,11 @@ namespace VierGewinnt
             }
             catch (TaskCanceledException)
             {
-
+                
+            }
+            catch (ThreadInterruptedException)
+            {
+               
             }
         }
 
@@ -176,6 +189,11 @@ namespace VierGewinnt
         private void Historie_Click(object sender, RoutedEventArgs e)
         {
             historie.Show();
+        }
+
+        private void windowClosing(object sender, CancelEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }
