@@ -22,13 +22,35 @@ namespace VierGewinnt
         public StartOptions()
         {
             InitializeComponent();
+
+            tb_player1.Text = "Player1";
+            tb_player2.Text = "Player2";
+            rb_Startetp1.IsChecked = true;
+            clrPcker_spieler1.SelectedColor = Colors.Red;
+            clrPcker_spieler2.SelectedColor = Colors.Green;
+
         }
 
         private void btn_Start_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mw = new MainWindow(tb_player1.Text, Color.FromRgb((byte)200, (byte)0, (byte)0), tb_player2.Text, Color.FromRgb((byte)0, (byte)0, (byte)200));
+            Byte erster = 0;
+            if (rb_Startetp1.IsChecked == true)
+            {
+                erster = 1;
+            }
+            else
+            {
+                erster = 2;
+            }
+
+            MainWindow mw = new MainWindow(tb_player1.Text, clrPcker_spieler1.SelectedColor.Value, tb_player2.Text, clrPcker_spieler2.SelectedColor.Value, erster);
             mw.Show();
             this.Close();
+        }
+
+        private void radioButton_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

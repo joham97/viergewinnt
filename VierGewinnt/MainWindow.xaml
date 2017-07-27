@@ -30,11 +30,11 @@
 
         <Frame x:Name="frame_p1" Content="" Grid.Column="0" HorizontalAlignment="Left" Height="33" Grid.Row="1" VerticalAlignment="Top" Width="180" Foreground="{x:Null}"/>
         <Label x:Name="lbl_Player1" Content="Player 1" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="1" VerticalAlignment="Top" Height="28" Width="125"/>
-        <Border x:Name="color_p1" BorderThickness="1" HorizontalAlignment="Left" Height="33" Margin="140,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="40" Background="#FFDE0000"/>
+        <Border x:Name="color_p1" BorderThickness="1" HorizontalAlignment="Left" Height="23" Margin="140,5,0,0" Grid.Row="1" VerticalAlignment="Top" Width="30" Background="#FFDE0000"/>
 
         <Frame x:Name="frame_p2" Content="" Grid.Column="2" HorizontalAlignment="Left" Height="33" Grid.Row="1" VerticalAlignment="Top" Width="180" Foreground="{x:Null}"/>
         <Label x:Name="lbl_Player2" Content="Player 2" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="1" VerticalAlignment="Top" Height="28" Width="125" Grid.Column="2"/>
-        <Border x:Name="color_p2" BorderThickness="1" HorizontalAlignment="Left" Height="33" Margin="140,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="40" Grid.Column="2" Background="#FF2300FF"/>
+        <Border x:Name="color_p2" BorderThickness="1" HorizontalAlignment="Left" Height="23" Margin="140,5,0,0" Grid.Row="1" VerticalAlignment="Top" Width="30" Grid.Column="2" Background="#FF2300FF"/>
 
         <local:SpielfeldUserControl x:Name="spielfeld" Width="700" Height="700" Margin="39,60,53,40" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="2">
         </local:SpielfeldUserControl>
