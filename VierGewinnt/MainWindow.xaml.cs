@@ -27,8 +27,8 @@ namespace VierGewinnt
         {
 
             InitializeComponent();
-            Spieler spieler1 = new Spieler( namep1, colorp1);
-            Spieler spieler2 = new Spieler( namep2, colorp2);
+            Spieler spieler1 = new Spieler(namep1, colorp1);
+            Spieler spieler2 = new Spieler(namep2, colorp2);
 
             amZug = spieler1;
 
@@ -36,16 +36,20 @@ namespace VierGewinnt
             spielfeld.feld = viergewinnt.feld;
             spielfeld.redraw();
 
-            spielfeld.Tick += (i, e) => {
-                viergewinnt.setzeChip(i, amZug);
-                if (amZug == spieler1)
+            spielfeld.Tick += (i, e) =>
+            {
+                if (viergewinnt.setzeChip(i, amZug))
                 {
-                    amZug = spieler2;
-                }else
-                {
-                    amZug = spieler1;
+                    if (amZug == spieler1)
+                    {
+                        amZug = spieler2;
+                    }
+                    else
+                    {
+                        amZug = spieler1;
+                    }
+                    spielfeld.redraw();
                 }
-                spielfeld.redraw();
             };
 
             setColorsPlayers(spieler1.Farbe, spieler2.Farbe);
@@ -103,7 +107,7 @@ namespace VierGewinnt
         {
 
         }
-        
+
         private void setColorsPlayers(Color color1, Color color2)
         {
             color_p1.Background = new SolidColorBrush(color1);
