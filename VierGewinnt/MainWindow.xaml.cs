@@ -23,19 +23,48 @@ namespace VierGewinnt
     {
         public Spieler amZug;
 
-        public MainWindow(String namep1, Color colorp1, String namep2, Color colorp2)
+        public MainWindow(String namep1, Color colorp1, String namep2, Color colorp2, Byte erster)
         {
 
             InitializeComponent();
             Spieler spieler1 = new Spieler(namep1, colorp1);
             Spieler spieler2 = new Spieler(namep2, colorp2);
 
-            amZug = spieler1;
+            frame_p1.BorderThickness = new Thickness(2.0);
+            frame_p2.BorderThickness = new Thickness(2.0);
+
+            if(erster == 1)
+            {
+                amZug = spieler1;
+                frame_p1.BorderBrush = Brushes.Red;
+            }
+            else
+            {
+                amZug = spieler2;
+                frame_p2.BorderBrush = Brushes.Red;
+
+            }
 
             VierGewinntSpiel viergewinnt = new VierGewinntSpiel(spieler1, spieler2);
             spielfeld.feld = viergewinnt.feld;
             spielfeld.redraw();
 
+<<<<<<< HEAD
+            
+
+            spielfeld.Tick += (i, e) => {
+                viergewinnt.setzeChip(i, amZug);
+                if (amZug == spieler1)
+                {
+                    amZug = spieler2;
+                    frame_p1.BorderBrush = Brushes.White;
+                    frame_p2.BorderBrush = Brushes.Red;
+                }else
+                {
+                    amZug = spieler1;
+                    frame_p1.BorderBrush = Brushes.Red;
+                    frame_p2.BorderBrush = Brushes.White;
+=======
             spielfeld.Tick += (i, e) =>
             {
                 if (viergewinnt.setzeChip(i, amZug))
@@ -49,6 +78,7 @@ namespace VierGewinnt
                         amZug = spieler1;
                     }
                     spielfeld.redraw();
+>>>>>>> f81181b9fc0c70b563bb591cfec030494e59b2c1
                 }
             };
 
