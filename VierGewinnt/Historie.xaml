@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VierGewinnt"
         mc:Ignorable="d"
-        Title="Historie" Height="800" Width="800">
+        Title="Historie" Height="740" Width="810">
     <Grid>
-        <local:SpielfeldUserControl x:Name="spielfeld" Height="700" Width="700" Margin="46,10,46,60" />
-        <Button x:Name="prev" Content="&lt;--" HorizontalAlignment="Left" Margin="300,728,0,0" VerticalAlignment="Top" Width="74" Click="prev_Click"/>
-        <Button x:Name="next" Content="--&gt;" HorizontalAlignment="Left" Margin="400,728,0,0" VerticalAlignment="Top" Width="74" Click="next_Click"/>
+        <local:SpielfeldUserControl x:Name="spielfeld" Height="600" Width="700" Margin="46,10,46,60" />
+        <Button x:Name="prev" Content="&lt;--" HorizontalAlignment="Left" Margin="312,670,0,0" VerticalAlignment="Top" Width="74" Click="prev_Click"/>
+        <Button x:Name="next" Content="--&gt;" HorizontalAlignment="Left" Margin="412,670,0,0" VerticalAlignment="Top" Width="74" Click="next_Click"/>
 
     </Grid>
 </Window>

@@ -35,7 +35,9 @@ namespace VierGewinnt
         {
             history.Add(feld);
             currentHistoryId = history.Count - 1;
-            spielfeld.feld = history[currentHistoryId];
+            spielfeld.feld = feld;
+            next.IsEnabled = false;
+            spielfeld.redraw();
         }
 
         private void prev_Click(object sender, RoutedEventArgs e)
@@ -44,6 +46,12 @@ namespace VierGewinnt
             {
                 currentHistoryId--;
                 spielfeld.feld = history[currentHistoryId];
+                spielfeld.redraw();
+
+                if (currentHistoryId == history.Count - 1) next.IsEnabled = false;
+                if (currentHistoryId != history.Count - 1) next.IsEnabled = true;
+                if (currentHistoryId == 0) prev.IsEnabled = false;
+                if (currentHistoryId != 0) prev.IsEnabled = true;
             }
         }
 
@@ -52,6 +60,12 @@ namespace VierGewinnt
             if (currentHistoryId < history.Count - 1)
             {
                 currentHistoryId++;
+                spielfeld.feld = history[currentHistoryId];
+                spielfeld.redraw();
+                if (currentHistoryId == history.Count - 1) next.IsEnabled = false;
+                if (currentHistoryId != history.Count - 1) next.IsEnabled = true;
+                if (currentHistoryId == 0) prev.IsEnabled = false;
+                if (currentHistoryId != 0) prev.IsEnabled = true;
             }
         }        
     }
