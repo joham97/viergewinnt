@@ -189,7 +189,7 @@ namespace VierGewinnt
         
         private void windowClosing(object sender, CancelEventArgs e)
         {
-            Environment.Exit(0);
+            //Environment.Exit(0);
         }
 
         private void save_Click(object sender, RoutedEventArgs e)

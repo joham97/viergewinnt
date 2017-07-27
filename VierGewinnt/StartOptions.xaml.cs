@@ -26,8 +26,8 @@ namespace VierGewinnt
             tb_player1.Text = "Player1";
             tb_player2.Text = "Player2";
             rb_Startetp1.IsChecked = true;
-            clrPcker_spieler1.SelectedColor = Colors.Red;
-            clrPcker_spieler2.SelectedColor = Colors.Green;
+            clrPcker_spieler1.SelectedColor = Colors.Blue;
+            clrPcker_spieler2.SelectedColor = Colors.Orange;
 
         }
 

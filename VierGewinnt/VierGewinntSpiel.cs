@@ -51,22 +51,50 @@ namespace VierGewinnt
 
         public void speichern()
         {
-            IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream("speicherstand.bin", FileMode.Create, FileAccess.Write, FileShare.None);
-            formatter.Serialize(stream, this);
-            stream.Close();
+            StringBuilder fileText = new StringBuilder();
+            fileText.AppendLine(spieler[0].Name + "|" + spieler[0].Farbe.R + "|" + spieler[0].Farbe.G + "|" + spieler[0].Farbe.B);
+            fileText.AppendLine(spieler[1].Name + "|" + spieler[1].Farbe.R + "|" + spieler[1].Farbe.G + "|" + spieler[1].Farbe.B);
+            foreach(Spieler spieler1 in feld.feld)
+            {
+                if(spieler1 == spieler[0])
+                {
+                    fileText.AppendLine("1");
+                }
+                else if(spieler1 == spieler[1])
+                {
+                    fileText.AppendLine("2");
+                }else
+                {
+                    fileText.AppendLine("0");
+                }
+            }
+
+
+            System.IO.File.WriteAllLines(@"C:\Users\SR43_9\Desktop\Save.txt", new string[] { fileText.ToString() });
+
+            //IFormatter formatter = new BinaryFormatter();
+            //Stream stream = new FileStream("speicherstand.bin", FileMode.Create, FileAccess.Write, FileShare.None);
+            //formatter.Serialize(stream, this);
+            //stream.Close();
         }
 
         public void laden()
         {
-            IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream("speicherstand.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
-            VierGewinntSpiel geladenesSpiel = 
-                (VierGewinntSpiel)formatter.Deserialize(new FileStream("speicherstand.bin", FileMode.Create, FileAccess.Write, FileShare.None));
-            stream.Close();
 
-            this.feld = geladenesSpiel.feld;
-            this.spieler = geladenesSpiel.spieler;
+            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\SR43_9\Desktop\Save.txt");
+
+            
+            Feld feld = new Feld();
+
+
+            //IFormatter formatter = new BinaryFormatter();
+            //Stream stream = new FileStream("speicherstand.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
+            //VierGewinntSpiel geladenesSpiel = 
+            //    (VierGewinntSpiel)formatter.Deserialize(new FileStream("speicherstand.bin", FileMode.Create, FileAccess.Write, FileShare.None));
+            //stream.Close();
+
+            //this.feld = geladenesSpiel.feld;
+            //this.spieler = geladenesSpiel.spieler;
         }
 
         public Feld kloneFeld()
