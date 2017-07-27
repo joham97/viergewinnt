@@ -26,6 +26,8 @@ namespace VierGewinnt
 
         private Historie historie;
 
+        VierGewinntSpiel viergewinnt;
+
         public MainWindow(String namep1, Color colorp1, String namep2, Color colorp2, Byte erster)
         {
             InitializeComponent();
@@ -49,8 +51,8 @@ namespace VierGewinnt
                 frame_p2.BorderBrush = Brushes.Red;
 
             }
-            
-            VierGewinntSpiel viergewinnt = new VierGewinntSpiel(spieler1, spieler2);
+
+            viergewinnt = new VierGewinntSpiel(spieler1, spieler2);
             spielfeld.feld = viergewinnt.feld;
             spielfeld.initFeld(true);
             spielfeld.redraw();
@@ -102,12 +104,7 @@ namespace VierGewinnt
 
             setColorsPlayers(spieler1.Farbe, spieler2.Farbe);
             setNamesPlayers(spieler1.Name, spieler2.Name);
-
             
-            
-
-
-
         }
 
         private void newStart(string p1, string p2, byte erster, Color c1, Color c2)
@@ -127,9 +124,7 @@ namespace VierGewinnt
 
                 while (true)
                 {
-
                     
-
                     if (sec == 59)
                     {
                         min += 1;
@@ -199,12 +194,12 @@ namespace VierGewinnt
 
         private void save_Click(object sender, RoutedEventArgs e)
         {
-
+            viergewinnt.speichern();
         }
 
         private void load_Click(object sender, RoutedEventArgs e)
         {
-
+            viergewinnt.laden();
         }
     }
 }

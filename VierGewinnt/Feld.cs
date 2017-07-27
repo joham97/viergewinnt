@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace VierGewinnt
 {
+    [Serializable()]
     public class Feld
     {
         public Spieler[,] feld { get; private set; }
