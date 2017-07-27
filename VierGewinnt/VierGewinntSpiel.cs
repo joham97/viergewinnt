@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace VierGewinnt
 {
-    class VierGewinntSpiel
+    [Serializable]
+    class VierGewinntSpiel 
     {
         public Feld feld { get; private set; }
         private Spieler[] spieler;
@@ -47,12 +51,22 @@ namespace VierGewinnt
 
         public void speichern()
         {
-
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("speicherstand.bin", FileMode.Create, FileAccess.Write, FileShare.None);
+            formatter.Serialize(stream, this);
+            stream.Close();
         }
 
         public void laden()
         {
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("speicherstand.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
+            VierGewinntSpiel geladenesSpiel = 
+                (VierGewinntSpiel)formatter.Deserialize(new FileStream("speicherstand.bin", FileMode.Create, FileAccess.Write, FileShare.None));
+            stream.Close();
 
+            this.feld = geladenesSpiel.feld;
+            this.spieler = geladenesSpiel.spieler;
         }
     }
 }
