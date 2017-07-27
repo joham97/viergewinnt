@@ -8,12 +8,12 @@ namespace VierGewinnt
 {
     public class Feld
     {
-        public Spieler[,] feld { get; private set; }
-        private Spieler gewinner;
+        public Spieler[,] Feld { get; private set; }
+        public Spieler Gewinner { get; set; }
 
         public Feld()
         {
-            feld = new Spieler[7, 7];
+            Feld = new Spieler[7, 7];
 
             // Zeile, Spalte
             // 0,0 ist unten links
@@ -25,25 +25,20 @@ namespace VierGewinnt
             // Zeile finden
             bool gesetzt = false;
 
-            for (int i = 0; i < feld.GetLength(0) && !gesetzt; i++)
+            for (int i = 0; i < Feld.GetLength(0) && !gesetzt; i++)
             {
-                if (feld[i, spalte] == null)
+                if (Feld[i, spalte] == null)
                 {
                     // einfügen
-                    feld[i, spalte] = spieler;
+                    Feld[i, spalte] = spieler;
                     gesetzt = true;
                 }
             }
         }
 
-        public Spieler getGewinner()
-        {
-            return gewinner;
-        }
-
         public Boolean gueltigerZug(int spalte)
         {
-            return (feld[feld.GetLength(0) - 1, spalte] == null);
+            return (Feld[Feld.GetLength(0) - 1, spalte] == null);
         }
 
         public Boolean spielende()
@@ -51,13 +46,13 @@ namespace VierGewinnt
             if (!zuegeMöglich())
                 return false;
 
-            for (int i = 0; i < feld.GetLength(0); i++)
+            for (int i = 0; i < Feld.GetLength(0); i++)
             {
-                for (int j = 0; j < feld.GetLength(1); j++)
+                for (int j = 0; j < Feld.GetLength(1); j++)
                 {
                     if (checkUmgebung(i, j))
                     {
-                        gewinner = feld[i, j];
+                        Gewinner = Feld[i, j];
                         return true;
                     }
                 }
@@ -69,13 +64,13 @@ namespace VierGewinnt
         {
             int anz;
 
-            if (feld[zeile, spalte] != null)
+            if (Feld[zeile, spalte] != null)
             {
                 // Unten
                 anz = 0;
                 for (int i = zeile - 1; i >= 0 && i > zeile - 4; i--)
                 {
-                    if (feld[zeile, spalte] == feld[i, spalte])
+                    if (Feld[zeile, spalte] == Feld[i, spalte])
                         anz++;
                     else
                         anz = 0;
@@ -84,9 +79,9 @@ namespace VierGewinnt
 
                 // Oben 
                 anz = 0;
-                for (int i = zeile + 1; i < feld.GetLength(0) && i < zeile + 4; i++)
+                for (int i = zeile + 1; i < Feld.GetLength(0) && i < zeile + 4; i++)
                 {
-                    if (feld[zeile, spalte] == feld[i, spalte])
+                    if (Feld[zeile, spalte] == Feld[i, spalte])
                         anz++;
                     else
                         anz = 0;
@@ -97,7 +92,7 @@ namespace VierGewinnt
                 anz = 0;
                 for (int i = spalte - 1; i >= 0 && i > spalte - 4; i--)
                 {
-                    if (feld[zeile, spalte] == feld[zeile, i])
+                    if (Feld[zeile, spalte] == Feld[zeile, i])
                         anz++;
                     else
                         anz = 0;
@@ -106,9 +101,9 @@ namespace VierGewinnt
 
                 // Rechts 
                 anz = 0;
-                for (int i = spalte + 1; i < feld.GetLength(1) && i < zeile + 4; i++)
+                for (int i = spalte + 1; i < Feld.GetLength(1) && i < zeile + 4; i++)
                 {
-                    if (feld[zeile, spalte] == feld[zeile, i])
+                    if (Feld[zeile, spalte] == Feld[zeile, i])
                         anz++;
                     else
                         anz = 0;
@@ -121,9 +116,9 @@ namespace VierGewinnt
                 anz = 0;
                 int s = spalte + 1;
                 int z = zeile - 1;
-                while (s < feld.GetLength(1) && s < spalte + 4 && z >= 0 && z > zeile - 4)
+                while (s < Feld.GetLength(1) && s < spalte + 4 && z >= 0 && z > zeile - 4)
                 {
-                    if (feld[zeile, spalte] == feld[z, s])
+                    if (Feld[zeile, spalte] == Feld[z, s])
                         anz++;
                     else
                         anz = 0;
@@ -136,9 +131,9 @@ namespace VierGewinnt
                 anz = 0;
                 s = spalte + 1;
                 z = zeile + 1;
-                while (s < feld.GetLength(1) && s < spalte + 4 && z < feld.GetLength(0) && z < spalte + 4)
+                while (s < Feld.GetLength(1) && s < spalte + 4 && z < Feld.GetLength(0) && z < spalte + 4)
                 {
-                    if (feld[zeile, spalte] == feld[z, s])
+                    if (Feld[zeile, spalte] == Feld[z, s])
                         anz++;
                     else
                         anz = 0;
@@ -153,7 +148,7 @@ namespace VierGewinnt
                 z = zeile - 1;
                 while (s >= 0 && s > spalte - 4 && z >= 0 && z > zeile - 4)
                 {
-                    if (feld[zeile, spalte] == feld[z, s])
+                    if (Feld[zeile, spalte] == Feld[z, s])
                         anz++;
                     else
                         anz = 0;
@@ -166,9 +161,9 @@ namespace VierGewinnt
                 anz = 0;
                 s = spalte - 1;
                 z = zeile + 1;
-                while (s >= 0 && s > spalte - 4 && z < feld.GetLength(0) && z < zeile + 4)
+                while (s >= 0 && s > spalte - 4 && z < Feld.GetLength(0) && z < zeile + 4)
                 {
-                    if (feld[zeile, spalte] == feld[z, s])
+                    if (Feld[zeile, spalte] == Feld[z, s])
                         anz++;
                     else
                         anz = 0;
@@ -182,7 +177,7 @@ namespace VierGewinnt
 
         private Boolean zuegeMöglich()
         {
-            for (int i = 0; i < feld.GetLength(0); i++)
+            for (int i = 0; i < Feld.GetLength(0); i++)
             {
                 if (gueltigerZug(i))
                     return true;

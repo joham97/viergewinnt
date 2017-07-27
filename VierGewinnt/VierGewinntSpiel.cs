@@ -46,7 +46,7 @@ namespace VierGewinnt
 
         public Spieler getGewinner()
         {
-            return feld.getGewinner();
+            return feld.Gewinner;
         }
 
         public void speichern()
@@ -67,6 +67,21 @@ namespace VierGewinnt
 
             this.feld = geladenesSpiel.feld;
             this.spieler = geladenesSpiel.spieler;
+        }
+
+        public Feld kloneFeld()
+        {
+            Feld f = new Feld();
+            f.Gewinner = feld.Gewinner;
+
+            for (int i = 0; i < feld.Feld.GetLength(0); i++)
+            {
+                for (int j = 0; j < feld.Feld.GetLength(1); j++)
+                {
+                    f.Feld[i, j] = feld.Feld[i, j];
+                }
+            }
+            return f;
         }
     }
 }

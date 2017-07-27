@@ -60,7 +60,7 @@ namespace VierGewinnt
         {
             for (int y = 0; y < 7; y++)
             {
-                if (feld.feld[y, x] == null)
+                if (feld.Feld[y, x] == null)
                 {
                     getEllipse(y, x).Fill = new SolidColorBrush(Color.FromRgb((byte)150, (byte)150, (byte)150));
                 }
@@ -71,7 +71,7 @@ namespace VierGewinnt
         {
             for (int y = 0; y < 7; y++)
             {
-                if (feld.feld[y, x] == null)
+                if (feld.Feld[y, x] == null)
                 {
                     getEllipse(y, x).Fill = new SolidColorBrush(Color.FromRgb((byte)200, (byte)200, (byte)200));
                 }
@@ -84,9 +84,9 @@ namespace VierGewinnt
             {
                 for (int y = 0; y < 7; y++)
                 {
-                    if (feld.feld[x, y] != null)
+                    if (feld.Feld[x, y] != null)
                     {
-                        getEllipse(x, y).Fill = new SolidColorBrush(feld.feld[x, y].Farbe);
+                        getEllipse(x, y).Fill = new SolidColorBrush(feld.Feld[x, y].Farbe);
                         
                     } else
                     {
