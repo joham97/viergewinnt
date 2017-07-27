@@ -1,0 +1,43 @@
+﻿<Window x:Class="VierGewinnt.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VierGewinnt"
+        mc:Ignorable="d"
+        Title="4 Gewinnt" Height="860" Width="810">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="11*"/>
+            <RowDefinition Height="89*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="180"/>
+        </Grid.ColumnDefinitions>
+        <Menu x:Name="_menu_control" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="5000">
+            <MenuItem x:Name="Menu" Width="50" Height="20" Header="Menu">
+                <MenuItem Command="Save"/>
+                <MenuItem Header="Load" DisplayMemberPath="Strg+L"/>
+            </MenuItem>
+            <MenuItem x:Name="Historie" Width="60" Height="20" Header="Historie">
+            </MenuItem>
+        </Menu>
+
+        <Label x:Name="label_Time" Content="00:00" Grid.Column="1" HorizontalAlignment="Center" Margin="58,5,57,0" Grid.Row="1" VerticalAlignment="Top" Height="28" Width="42"/>
+
+        <Frame x:Name="frame_p1" Content="" Grid.Column="0" HorizontalAlignment="Left" Height="33" Grid.Row="1" VerticalAlignment="Top" Width="180" Foreground="{x:Null}"/>
+        <Label x:Name="lbl_Player1" Content="Player 1" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="1" VerticalAlignment="Top" Height="28" Width="125"/>
+        <Border x:Name="color_p1" BorderThickness="1" HorizontalAlignment="Left" Height="33" Margin="140,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="40" Background="#FFDE0000"/>
+
+        <Frame x:Name="frame_p2" Content="" Grid.Column="2" HorizontalAlignment="Left" Height="33" Grid.Row="1" VerticalAlignment="Top" Width="180" Foreground="{x:Null}"/>
+        <Label x:Name="lbl_Player2" Content="Player 2" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="1" VerticalAlignment="Top" Height="28" Width="125" Grid.Column="2"/>
+        <Border x:Name="color_p2" BorderThickness="1" HorizontalAlignment="Left" Height="33" Margin="140,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="40" Grid.Column="2" Background="#FF2300FF"/>
+
+        <local:SpielfeldUserControl x:Name="spielfeld" Width="700" Height="700" Margin="39,60,53,40" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="2">
+        </local:SpielfeldUserControl>
+
+    </Grid>
+</Window>
