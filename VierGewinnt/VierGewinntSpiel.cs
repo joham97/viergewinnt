@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VierGewinnt
 {
-    public class VierGewinntSpiel
+    class VierGewinntSpiel
     {
         public Feld feld { get; private set; }
         private Spieler[] spieler;
@@ -19,7 +19,7 @@ namespace VierGewinnt
 
         public Boolean setzeChip(int spalte, Spieler spieler)
         {
-            if (feld.gueltigerZug(spalte))
+            if (!feld.spielende() && feld.gueltigerZug(spalte))
             {
                 feld.setzeChip(spalte, spieler);
                 return true;
@@ -32,18 +32,18 @@ namespace VierGewinnt
 
         public Boolean gueltigerZug(int spalte)
         {
-            return this.feld.gueltigerZug(spalte);
+            return feld.gueltigerZug(spalte);
         }
 
-        /*public Boolean spielende()
+        public Boolean spielende()
         {
             return feld.spielende();
-        }*/
+        }
 
-        /*public Spieler getGewinner()
+        public Spieler getGewinner()
         {
             return feld.getGewinner();
-        }*/
+        }
 
         public void speichern()
         {
