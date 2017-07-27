@@ -49,9 +49,6 @@ namespace VierGewinnt
             spielfeld.feld = viergewinnt.feld;
             spielfeld.redraw();
 
-<<<<<<< HEAD
-            
-
             spielfeld.Tick += (i, e) => {
                 viergewinnt.setzeChip(i, amZug);
                 if (amZug == spieler1)
@@ -64,21 +61,6 @@ namespace VierGewinnt
                     amZug = spieler1;
                     frame_p1.BorderBrush = Brushes.Red;
                     frame_p2.BorderBrush = Brushes.White;
-=======
-            spielfeld.Tick += (i, e) =>
-            {
-                if (viergewinnt.setzeChip(i, amZug))
-                {
-                    if (amZug == spieler1)
-                    {
-                        amZug = spieler2;
-                    }
-                    else
-                    {
-                        amZug = spieler1;
-                    }
-                    spielfeld.redraw();
->>>>>>> f81181b9fc0c70b563bb591cfec030494e59b2c1
                 }
             };
 
