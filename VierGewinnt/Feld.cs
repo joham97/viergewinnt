@@ -130,7 +130,7 @@ namespace VierGewinnt
                     z--;
                     s++;
                 }
-                if (anz > 4) return true;
+                if (anz == 3) return true;
 
                 // Oben Rechts
                 anz = 0;
@@ -145,7 +145,7 @@ namespace VierGewinnt
                     z++;
                     s++;
                 }
-                if (anz > 4) return true;
+                if (anz == 3) return true;
 
                 // Unten Links
                 anz = 0;
@@ -160,7 +160,7 @@ namespace VierGewinnt
                     z--;
                     s--;
                 }
-                if (anz > 4) return true;
+                if (anz == 3) return true;
 
                 // Oben Links
                 anz = 0;
@@ -175,7 +175,7 @@ namespace VierGewinnt
                     z++;
                     s--;
                 }
-                if (anz > 4) return true;
+                if (anz == 3) return true;
             }
             return false;
         }
