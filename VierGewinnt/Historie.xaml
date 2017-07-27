@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Historie" Height="800" Width="800">
     <Grid>
-        <local:SpielfeldUserControl x:Name="spielfeld" Height="700" Width="700" Margin="46,10,46,60"/>
+        <local:SpielfeldUserControl x:Name="spielfeld" Height="700" Width="700" Margin="46,10,46,60" />
         <Button x:Name="prev" Content="&lt;--" HorizontalAlignment="Left" Margin="300,728,0,0" VerticalAlignment="Top" Width="74" Click="prev_Click"/>
         <Button x:Name="next" Content="--&gt;" HorizontalAlignment="Left" Margin="400,728,0,0" VerticalAlignment="Top" Width="74" Click="next_Click"/>
 

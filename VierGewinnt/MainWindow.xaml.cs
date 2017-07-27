@@ -23,9 +23,13 @@ namespace VierGewinnt
     {
         public Spieler amZug;
 
+        private Historie historie;
+
         public MainWindow(String namep1, Color colorp1, String namep2, Color colorp2, Byte erster)
         {
             InitializeComponent();
+            spielfeld.initFeld(true);
+
             Spieler spieler1 = new Spieler(namep1, colorp1);
             Spieler spieler2 = new Spieler(namep2, colorp2);
 
@@ -47,7 +51,7 @@ namespace VierGewinnt
             VierGewinntSpiel viergewinnt = new VierGewinntSpiel(spieler1, spieler2);
             spielfeld.feld = viergewinnt.feld;
             spielfeld.redraw();
-
+            
             spielfeld.Tick += (i, e) => {
                 if (viergewinnt.setzeChip(i, amZug))
                 {
@@ -63,9 +67,13 @@ namespace VierGewinnt
                         frame_p1.BorderBrush = Brushes.Red;
                         frame_p2.BorderBrush = Brushes.White;
                     }
+                    historie.Add(viergewinnt.kloneFeld());
                     spielfeld.redraw();
                 }
             };
+
+            historie = new Historie();
+            historie.Add(viergewinnt.kloneFeld());
 
             setColorsPlayers(spieler1.Farbe, spieler2.Farbe);
             setNamesPlayers(spieler1.Name, spieler2.Name);
@@ -133,6 +141,11 @@ namespace VierGewinnt
         {
             lbl_Player1.Content = name1;
             lbl_Player2.Content = name2;
+        }
+
+        private void Historie_Click(object sender, RoutedEventArgs e)
+        {
+            historie.Show();
         }
     }
 }

@@ -74,11 +74,11 @@ namespace VierGewinnt
             Feld f = new Feld();
             f.Gewinner = feld.Gewinner;
 
-            for (int i = 0; i < feld.Feld.GetLength(0); i++)
+            for (int i = 0; i < feld.feld.GetLength(0); i++)
             {
-                for (int j = 0; j < feld.Feld.GetLength(1); j++)
+                for (int j = 0; j < feld.feld.GetLength(1); j++)
                 {
-                    f.Feld[i, j] = feld.Feld[i, j];
+                    f.feld[i, j] = feld.feld[i, j];
                 }
             }
             return f;

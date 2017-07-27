@@ -30,10 +30,9 @@ namespace VierGewinnt
         public SpielfeldUserControl()
         {
             InitializeComponent();
-            initFeld();
         }
         
-        private void initFeld()
+        public void initFeld(bool withMouseEvent)
         {
             for (int x = 0; x < 7; x++)
             {
@@ -41,14 +40,16 @@ namespace VierGewinnt
                 {
                     int X = x;
                     int Y = y;
-                    Console.WriteLine(x);
                     Ellipse ellipse = new Ellipse();
                     ellipse.Width = 90;
                     ellipse.Height = 90;
                     ellipse.Fill = new SolidColorBrush(Color.FromRgb((byte)200, (byte)200, (byte)200));
-                    ellipse.MouseEnter += (obj, e) => { highlightColumn(X); };
-                    ellipse.MouseLeave += (obj, e) => { notHighlightColumn(X); };
-                    ellipse.MouseDown += (obj, e) => { Tick(X, e); };
+                    if (withMouseEvent)
+                    {
+                        ellipse.MouseEnter += (obj, e) => { highlightColumn(X); };
+                        ellipse.MouseLeave += (obj, e) => { notHighlightColumn(X); };
+                        ellipse.MouseDown += (obj, e) => { Tick(X, e); };
+                    }
                     grid.Children.Add(ellipse);
                     Grid.SetColumn(ellipse, x);
                     Grid.SetRow(ellipse, y);
@@ -60,7 +61,7 @@ namespace VierGewinnt
         {
             for (int y = 0; y < 7; y++)
             {
-                if (feld.Feld[y, x] == null)
+                if (feld.feld[y, x] == null)
                 {
                     getEllipse(y, x).Fill = new SolidColorBrush(Color.FromRgb((byte)150, (byte)150, (byte)150));
                 }
@@ -71,7 +72,7 @@ namespace VierGewinnt
         {
             for (int y = 0; y < 7; y++)
             {
-                if (feld.Feld[y, x] == null)
+                if (feld.feld[y, x] == null)
                 {
                     getEllipse(y, x).Fill = new SolidColorBrush(Color.FromRgb((byte)200, (byte)200, (byte)200));
                 }
@@ -84,9 +85,9 @@ namespace VierGewinnt
             {
                 for (int y = 0; y < 7; y++)
                 {
-                    if (feld.Feld[x, y] != null)
+                    if (feld.feld[x, y] != null)
                     {
-                        getEllipse(x, y).Fill = new SolidColorBrush(feld.Feld[x, y].Farbe);
+                        getEllipse(x, y).Fill = new SolidColorBrush(feld.feld[x, y].Farbe);
                         
                     } else
                     {
