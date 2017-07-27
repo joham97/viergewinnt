@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,14 +19,21 @@ namespace VierGewinnt
     public partial class Historie : Window
     {
 
-        public List<Feld> history;
+        private List<Feld> history;
 
         public int currentHistoryId;
 
         public Historie()
         {
             InitializeComponent();
+            spielfeld.initFeld(false);
             history = new List<Feld>();
+        }
+
+        public void Add(Feld feld)
+        {
+            history.Add(feld);
+            currentHistoryId = history.Count - 1;
         }
 
         private void prev_Click(object sender, RoutedEventArgs e)
