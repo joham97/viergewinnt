@@ -51,14 +51,9 @@ namespace VierGewinnt
             VierGewinntSpiel viergewinnt = new VierGewinntSpiel(spieler1, spieler2);
             spielfeld.feld = viergewinnt.feld;
             spielfeld.redraw();
-<<<<<<< HEAD
 
             spielfeld.Tick += (i, e) =>
             {
-=======
-            
-            spielfeld.Tick += (i, e) => {
->>>>>>> 1cff476246795c450a576c0c5a0ba3baacb7bd4f
                 if (viergewinnt.setzeChip(i, amZug))
                 {
                     spielfeld.redraw();
