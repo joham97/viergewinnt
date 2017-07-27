@@ -1,5 +1,7 @@
-.vs
+.*
+!/.gitignore
 
 VierGewinnt/[Bb]in/
 VierGewinnt/[Oo]bj/
 VierGewinnt/[Ll]og/
+
