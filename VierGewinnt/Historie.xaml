@@ -1,0 +1,15 @@
+﻿<Window x:Class="VierGewinnt.Historie"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VierGewinnt"
+        mc:Ignorable="d"
+        Title="Historie" Height="800" Width="800">
+    <Grid>
+        <local:SpielfeldUserControl x:Name="spielfeld" Height="700" Width="700" Margin="46,10,46,60"/>
+        <Button x:Name="prev" Content="&lt;--" HorizontalAlignment="Left" Margin="300,728,0,0" VerticalAlignment="Top" Width="74" Click="prev_Click"/>
+        <Button x:Name="next" Content="--&gt;" HorizontalAlignment="Left" Margin="400,728,0,0" VerticalAlignment="Top" Width="74" Click="next_Click"/>
+
+    </Grid>
+</Window>

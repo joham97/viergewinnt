@@ -79,6 +79,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Historie.xaml.cs">
+      <DependentUpon>Historie.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Spieler.cs" />
     <Compile Include="SpielfeldUserControl.xaml.cs">
       <DependentUpon>SpielfeldUserControl.xaml</DependentUpon>
@@ -87,6 +90,10 @@
       <DependentUpon>StartOptions.xaml</DependentUpon>
     </Compile>
     <Compile Include="VierGewinntSpiel.cs" />
+    <Page Include="Historie.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -25,7 +25,6 @@ namespace VierGewinnt
 
         public MainWindow(String namep1, Color colorp1, String namep2, Color colorp2, Byte erster)
         {
-
             InitializeComponent();
             Spieler spieler1 = new Spieler(namep1, colorp1);
             Spieler spieler2 = new Spieler(namep2, colorp2);
@@ -50,17 +49,21 @@ namespace VierGewinnt
             spielfeld.redraw();
 
             spielfeld.Tick += (i, e) => {
-                viergewinnt.setzeChip(i, amZug);
-                if (amZug == spieler1)
+                if (viergewinnt.setzeChip(i, amZug))
                 {
-                    amZug = spieler2;
-                    frame_p1.BorderBrush = Brushes.White;
-                    frame_p2.BorderBrush = Brushes.Red;
-                }else
-                {
-                    amZug = spieler1;
-                    frame_p1.BorderBrush = Brushes.Red;
-                    frame_p2.BorderBrush = Brushes.White;
+                    if (amZug == spieler1)
+                    {
+                        amZug = spieler2;
+                        frame_p1.BorderBrush = Brushes.White;
+                        frame_p2.BorderBrush = Brushes.Red;
+                    }
+                    else
+                    {
+                        amZug = spieler1;
+                        frame_p1.BorderBrush = Brushes.Red;
+                        frame_p2.BorderBrush = Brushes.White;
+                    }
+                    spielfeld.redraw();
                 }
             };
 
