@@ -23,5 +23,12 @@ namespace VierGewinnt
         {
             InitializeComponent();
         }
+
+        private void btn_Start_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mw = new MainWindow(tb_player1.Text, Color.FromRgb((byte)200, (byte)0, (byte)0), tb_player2.Text, Color.FromRgb((byte)0, (byte)0, (byte)200));
+            mw.Show();
+            this.Close();
+        }
     }
 }

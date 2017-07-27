@@ -21,14 +21,14 @@ namespace VierGewinnt
     /// </summary>
     public partial class MainWindow : Window
     {
-
         public Spieler amZug;
 
-        public MainWindow()
+        public MainWindow(String namep1, Color colorp1, String namep2, Color colorp2)
         {
+
             InitializeComponent();
-            Spieler spieler1 = new Spieler("Olli", Color.FromRgb((byte)200, (byte)0, (byte)0));
-            Spieler spieler2 = new Spieler("Andrea", Color.FromRgb((byte)0, (byte)200, (byte)0));
+            Spieler spieler1 = new Spieler( namep1, colorp1);
+            Spieler spieler2 = new Spieler( namep2, colorp2);
 
             amZug = spieler1;
 
